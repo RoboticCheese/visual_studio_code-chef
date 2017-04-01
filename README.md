@@ -10,65 +10,58 @@ Visual_studio_code Cookbook
 [codeclimate]: https://codeclimate.com/github/RoboticCheese/visual_studio_code-chef
 [coveralls]: https://coveralls.io/r/RoboticCheese/visual_studio_code-chef
 
-TODO: Enter the cookbook description here.
+A Chef cookbook for Microsoft Visual Studio Code.
 
 Requirements
 ============
 
-TODO: Describe cookbook dependencies.
+This cookbook requires Chef 12+.
 
 Usage
 =====
 
-TODO: Describe how to use the cookbook.
+Either add the included default recipe to your node's run list or call the
+custom resources directly.
 
 Recipes
 =======
 
 ***default***
 
-TODO: Describe each component recipe.
+Installs Visual Studio Code.
 
 Attributes
 ==========
 
 ***default***
 
-TODO: Describe any noteworthy attributes.
-
 Resources
 =========
 
-***visual_studio_code***
+***visual_studio_code_app***
 
-TODO: Describe each included resource.
+Manages installation of the Visual Studio Code packages.
 
 Syntax:
 
-    visual_studio_code 'my_resource' do
-      property1 'value1'
-      action :create
+    visual_studio_code_app 'default' do
+      source :homebrew
+      action :install
     end
 
 Actions:
 
-| Action  | Description  |
-|---------|--------------|
-| action1 | Do something |
+| Action     | Description                  |
+|------------|------------------------------|
+| `:install` | Install Visual Studio Code   |
+| `:remove`  | Uninstall Visual Studio Code |
 
 Properties:
 
-| Property  | Default        | Description          |
-|-----------|----------------|----------------------|
-| property1 | `'some_value'` | Do something         |
-| action    | `:create`      | Action(s) to perform |
-
-Providers
-=========
-
-TODO: Describe each included provider
-
-***Chef::Provider::SomeProvider***
+| Property | Default     | Description                    |
+|----------|-------------|--------------------------------|
+| source   | `:homebrew` | Source to install the app from |
+| action   | `:install`  | Action(s) to perform           |
 
 Contributing
 ============
@@ -82,6 +75,7 @@ Contributing
 
 License & Authors
 =================
+
 - Author: Jonathan Hartman <j@hartman.io>
 
 Copyright:: 2017, Jonathan Hartman

@@ -3,7 +3,7 @@
 
 #
 # Cookbook Name:: visual_studio_code
-# Recipe:: default
+# Attributes:: default
 #
 # Copyright:: 2017, Jonathan Hartman
 #
@@ -19,5 +19,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-visual_studio_code_app 'default'

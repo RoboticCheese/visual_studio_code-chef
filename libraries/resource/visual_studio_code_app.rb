@@ -3,9 +3,9 @@
 
 #
 # Cookbook Name:: visual_studio_code
-# Recipe:: default
+# Library:: resource/visual_studio_code_app
 #
-# Copyright:: 2017, Jonathan Hartman
+# Copyright 2017, Jonathan Hartman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,4 +20,15 @@
 # limitations under the License.
 #
 
-visual_studio_code_app 'default'
+require 'chef/resource'
+
+class Chef
+  class Resource
+    # A Chef resource for managing the Visual Studio Code app.
+    #
+    # @author Jonathan Hartman <j@hartman.io>
+    class VisualStudioCodeApp < Resource
+      default_action :install
+    end
+  end
+end

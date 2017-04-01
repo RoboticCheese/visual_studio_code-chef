@@ -27,8 +27,7 @@ group :test do
 end
 
 group :integration do
-  gem 'cucumber'
-  gem 'serverspec'
+  gem 'kitchen-inspec'
 end
 
 group :deploy do

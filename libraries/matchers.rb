@@ -3,9 +3,9 @@
 
 #
 # Cookbook Name:: visual_studio_code
-# Recipe:: default
+# Library:: matchers
 #
-# Copyright:: 2017, Jonathan Hartman
+# Copyright 2017, Jonathan Hartman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,4 +20,16 @@
 # limitations under the License.
 #
 
-visual_studio_code_app 'default'
+if defined?(ChefSpec)
+  {
+    visual_studio_code_app: %i[install remove]
+  }.each do |matcher, actions|
+    ChefSpec.define_matcher(matcher)
+
+    actions.each do |action|
+      define_method("#{action}_#{matcher}") do |name|
+        ChefSpec::Matchers::ResourceMatcher.new(matcher, action, name)
+      end
+    end
+  end
+end
