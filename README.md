@@ -35,6 +35,12 @@ Attributes
 
 ***default***
 
+By default, installation will be done via Homebrew, Chocolatey, APT, or YUM.
+The app source attribute can be overridden to install it by downloading the
+package file directly.
+
+    default['visual_studio_code']['app']['source'] = :direct
+
 Resources
 =========
 

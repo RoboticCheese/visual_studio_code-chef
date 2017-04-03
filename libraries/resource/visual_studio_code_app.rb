@@ -33,7 +33,7 @@ class Chef
       property :source,
                Symbol,
                coerce: proc { |v| v.to_sym },
-               equal_to: %i[repo],
+               equal_to: %i[repo direct],
                default: :repo
     end
   end

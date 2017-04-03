@@ -38,6 +38,19 @@ class Chef
           when :repo
             include_recipe 'homebrew'
             homebrew_cask 'visual-studio-code'
+          when :direct
+            return if ::Dir.exist?('/Applications/Visual Studio Code.app')
+
+            dest = ::File.join(Chef::Config[:file_cache_path], 'vscode.zip')
+
+            remote_file dest do
+              source 'https://vscode-update.azurewebsites.net/latest/' \
+                     'darwin/stable'
+            end
+
+            execute 'Extract Visual Studio Code' do
+              command "unzip -d /Applications #{dest}"
+            end
           end
         end
 
@@ -46,6 +59,23 @@ class Chef
           when :repo
             include_recipe 'homebrew'
             homebrew_cask('visual-studio-code') { action :uninstall }
+          when :direct
+            [
+              '~/Library/Saved Application State/' \
+                'com.microsoft.VSCode.savedState',
+              '~/Library/Preferences/com.microsoft.VSCode.plist',
+              '~/Library/Preferences/com.microsoft.VSCode.helper.plist',
+              '~/Library/Caches/com.microsoft.VSCode.ShipIt',
+              '~/Library/Caches/com.microsoft.VSCode',
+              '~/Library/Application Support/Code',
+              '~/.vscode',
+              '/Applications/Visual Studio Code.app'
+            ].each do |d|
+              directory ::File.expand_path(d) do
+                recursive true
+                action :delete
+              end
+            end
           end
         end
       end

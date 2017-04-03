@@ -7,7 +7,7 @@ shared_context 'resources::visual_studio_code_app' do
   include_context 'resources'
 
   let(:resource) { 'visual_studio_code_app' }
-  %w[source].each { |p| let(p) { nil } }
+  %i[source].each { |p| let(p) { nil } }
   let(:properties) { { source: source } }
   let(:name) { 'default' }
 

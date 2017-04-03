@@ -20,4 +20,8 @@
 # limitations under the License.
 #
 
-visual_studio_code_app 'default'
+attrs = node['visual_studio_code']
+
+visual_studio_code_app 'default' do
+  source attrs['app']['source'] unless attrs['app']['source'].nil?
+end

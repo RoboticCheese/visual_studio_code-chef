@@ -15,3 +15,10 @@ suites:
   - name: default
     run_list:
       - recipe[visual_studio_code]
+  - name: direct
+    run_list:
+      - recipe[visual_studio_code]
+    attributes:
+      visual_studio_code:
+        app:
+          source: direct
