@@ -29,6 +29,12 @@ class Chef
     # @author Jonathan Hartman <j@hartman.io>
     class VisualStudioCodeApp < Resource
       default_action :install
+
+      property :source,
+               Symbol,
+               coerce: proc { |v| v.to_sym },
+               equal_to: %i[repo],
+               default: :repo
     end
   end
 end

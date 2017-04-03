@@ -33,15 +33,9 @@ class Chef
 
         provides :visual_studio_code_app, platform_family: 'mac_os_x'
 
-        property :source,
-                 Symbol,
-                 coerce: proc { |v| v.to_sym },
-                 equal_to: %i[homebrew],
-                 default: :homebrew
-
         action :install do
           case new_resource.source
-          when :homebrew
+          when :repo
             include_recipe 'homebrew'
             homebrew_cask 'visual-studio-code'
           end
@@ -49,7 +43,7 @@ class Chef
 
         action :remove do
           case new_resource.source
-          when :homebrew
+          when :repo
             include_recipe 'homebrew'
             homebrew_cask('visual-studio-code') { action :uninstall }
           end

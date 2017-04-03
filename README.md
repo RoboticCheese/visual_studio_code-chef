@@ -45,7 +45,7 @@ Manages installation of the Visual Studio Code packages.
 Syntax:
 
     visual_studio_code_app 'default' do
-      source :homebrew
+      source :repo
       action :install
     end
 
@@ -58,10 +58,13 @@ Actions:
 
 Properties:
 
-| Property | Default     | Description                    |
-|----------|-------------|--------------------------------|
-| source   | `:homebrew` | Source to install the app from |
-| action   | `:install`  | Action(s) to perform           |
+| Property | Default    | Description                      |
+|----------|------------|----------------------------------|
+| source   | `:repo`    | Source to install the app from\* |
+| action   | `:install` | Action(s) to perform             |
+
+\* Valid `source` values are `:repo` (via Homebrew, Chocolatey, APT, YUM) or
+   `:direct` (download the package file itself and install it).
 
 Contributing
 ============
