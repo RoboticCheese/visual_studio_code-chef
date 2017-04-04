@@ -10,6 +10,7 @@ verifier:
 
 platforms:
   - name: macos-10.12
+  - name: windows-10
 
 suites:
   - name: default

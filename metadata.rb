@@ -13,7 +13,9 @@ chef_version '>= 12.1'
 source_url 'https://github.com/RoboticCheese/visual_studio_code-chef'
 issues_url 'https://github.com/RoboticCheese/visual_studio_code-chef/issues'
 
+depends 'chocolatey', '~> 1.1'
 depends 'dmg', '~> 3.0'
 depends 'homebrew', '~> 3.0'
 
 supports 'mac_os_x'
+supports 'windows'
