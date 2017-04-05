@@ -19,3 +19,5 @@ depends 'homebrew', '~> 3.0'
 
 supports 'mac_os_x'
 supports 'windows'
+supports 'ubuntu'
+supports 'debian'
